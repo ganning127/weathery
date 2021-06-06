@@ -1,0 +1,190 @@
+/* Color Theme Swatches in Hex */
+.The-changes-of-weather.-A-natural-phenomenon-of-the-differences-of-four-seasons-1-hex { color: #083359; }
+.The-changes-of-weather.-A-natural-phenomenon-of-the-differences-of-four-seasons-2-hex { color: #56738C; }
+.The-changes-of-weather.-A-natural-phenomenon-of-the-differences-of-four-seasons-3-hex { color: #4590BF; }
+.The-changes-of-weather.-A-natural-phenomenon-of-the-differences-of-four-seasons-4-hex { color: #9AC1D9; }
+.The-changes-of-weather.-A-natural-phenomenon-of-the-differences-of-four-seasons-5-hex { color: #E9EFF2; }
+
+
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #CDDEF3;
+  background: url("../img/cover-lighter.png") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cover {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.title-text {
+  font-size: 10rem;
+  color: #083359
+}
+.location-enter {
+  color: #56738C;
+}
+.form-control, .form-control:focus {
+  border-radius: 20px;
+  background-color: #56738C;
+  color: white;
+}
+
+
+::-webkit-input-placeholder { /* Edge */
+  color: #E9EFF2 !important;
+
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #E9EFF2 !important;
+}
+
+::placeholder {
+  color: #E9EFF2 !important;
+}
+
+#header-separator {
+  height: 5rem;
+}
+
+
+#button-submit {
+	color: #083359;
+	border: 2px solid #083359;
+  min-width: 200px;
+}
+
+#button-submit:hover {
+  background-color: #083359;
+	color: white;
+	letter-spacing: 5px;
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .title-text {
+    font-size: 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title-text {
+    font-size: 4rem;
+  }
+}
+
+
+.ajax-section {
+  margin: 50px 0 20px;
+}
+
+.ajax-section .cities {
+  display: grid;
+  grid-gap: 32px 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media screen and (max-width: 1000px) {
+  .ajax-section .cities {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .ajax-section .cities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .small-logo {
+    display: block !important;
+  }
+  .large-logo {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ajax-section .cities {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+
+.row-separator {
+  height: 10rem;
+}
+
+.weather-content {
+  min-height: 10rem;
+  margin: 1rem 0;
+  background-color: #5C727D;
+  border-radius: 20px;
+}
+
+.ajax-section {
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+
+.hourly-content {
+  background-color: #56738C;
+  border-radius: 20px;
+  margin: 0.8rem 0.8rem;
+}
+
+
+.hourly-icon {
+  margin-top: -1.5rem;
+}
+
+.hourly-data {
+  margin: 0 0 0.5rem 0;
+}
+
+.data-header {
+  color: #56738C;
+  font-weight: 1000;
+}
+
+
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.weather-content {
+  background-color: #083359
+}
+
+.hover-effect {
+	border-radius: 20px;
+	text-decoration: none;
+	padding: 0 1rem 0rem 1rem;
+	letter-spacing: 2px;
+	transition: all .25s;
+  font-size: 1.3rem;
+}
+
+
+
+.small-logo {
+  margin-top: -6rem;
+  display: none;
+}
+#conditions-img {
+  margin-top: -1rem;
+}
