@@ -8,6 +8,7 @@
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
       <link rel="icon" href="favicon.ico">
       <link rel="stylesheet" href="./css/index-style.css">
       <title>Weathery</title>
@@ -15,111 +16,121 @@
    <body>
       <section class="cover">
          <div class="content container">
-
             <div class="row small-logo text-center justify-content-center align-items-end">
-              <img src="./img/logo.png" alt="" class="img-fluid" style="width:300px">
+               <img src="./img/logo.png" alt="" class="img-fluid" style="width:300px">
             </div>
             <div class="row">
                <div class="col justify-content-center align-items-end d-flex">
                   <h1 class="title-text text-center"></h1>
                </div>
                <div class="col-3 justify-content-left align-items-center d-flex large-logo">
-                 <img src="./img/logo.png" alt="" class="img-fluid">
+                  <img src="./img/logo.png" alt="Weathery Logo" class="img-fluid">
                </div>
             </div>
-
             <div class="row align-items-center d-flex justify-content-center" >
-               <div class="col-6 mt-2">
-                  <h4 class="text-right location-enter">Enter Location</h4>
-               </div>
-               <div class="col-6">
+               <div class="col-12 d-flex justify-content-center">
                   <form action="" class="form-inline" id="weatherForm" >
-                     <input type="city" id="city" class="form-control text-center" placeholder="City">
+                     <input type="city" id="city" class="form-control text-center" placeholder="City or Zipcode">
+                     <button type="submit" class="btn hover-effect" id="button-submit">Search</button>
+                  </form>
+               </div>
+               <div class="row error-text hidden">
+                 <div class="col-12">
+                   <p>&#9888; Error, please enter a valid city or zip code</p>
+                 </div>
                </div>
                <div id="header-separator"></div>
-               <button type="submit" class="btn hover-effect" id="button-submit">Search</button>
-               </form>
             </div>
          </div>
       </section>
-
       <section class="ajax-section hidden" id="output_data">
          <div class="container">
             <h1 id="location" class="text-center mb-5 data-header">Current Weather Data for [LOCATION]</h1>
             <div class="row">
                <div class="col-md-4 text-center weather-item align-self-center" id="feels-like">
                   <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
-                    <div class="items">
-                     <h4 class="pt-3">Feels Like (&deg;F)</h4>
-                     <p class="display-4 align-self-center">98</p>
+                     <div class="items">
+                        <h4 class="pt-3">Feels Like (&deg;F)</h4>
+                        <p class="display-4 align-self-center"><span class="info">98</span></p>
                      </div>
                   </div>
                </div>
                <div class="col-md-4 text-center weather-item align-self-center" id="temp">
-                 <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
-                   <div class="items">
-                     <h4 class="pt-3">Current Temp (&deg;F)</h4>
-                     <p class="display-4 align-self-center">100</p>
+                  <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
+                     <div class="items">
+                        <h4 class="pt-3">Current Temp (&deg;F)</h4>
+                        <p class="display-4 align-self-center"><span class="info">100</span></p>
+                     </div>
                   </div>
-                </div>
                </div>
                <div class="col-md-4 text-center weather-item align-self-center" id="cond">
-                 <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
-                   <div class="items">
-                    <h4 class="conditions-text pt-3">Conditions</h4>
-                     <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/01d.svg" alt="" id="conditions-img" class="img-fluid">
-                   </div>
-                </div>
+                  <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
+                     <div class="items">
+                        <h4 class="conditions-text pt-3">Conditions</h4>
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/01d.svg" alt="" id="conditions-img" class="img-fluid">
+                     </div>
+                  </div>
                </div>
             </div>
-
-            <div class="row-separator"></div>
-
-            <h1 id="hourly" class="text-center mb-5 data-header">Hourly Weather Data for [LOCATION]</h1>
             <div class="row justify-content-center">
-               <div class="col-md-2 hourly-content text-center">
-                  <h5 id="time0" class='text-center pt-3'>9:00 AM</h5>
-                  <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" class="hourly-icon" id="icon0">
-                  <p class="hourly-data" id="temp0">100 &deg;F</p>
-                  <p class="hourly-data" id="rain0">30% Chance of rain</p>
-                  <p class="hourly-data wind" id="wind0">5.23 mph winds</p>
+               <div class="col-md-3 text-center weather-item align-self-center" id="sunrise">
+                  <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
+                     <div class="items">
+                        <h4 class="pt-3">Sunrise</h4>
+                        <p class="align-self-center"><span class="info time">5:00 AM</span></p>
+                     </div>
+                  </div>
                </div>
-               <div class="col-md-2 hourly-content text-center">
-                  <h5 id="time1" class='text-center pt-3'>9:00 AM</h5>
-                  <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" class="hourly-icon" id="icon1">
-                  <!-- precip -->
-                  <!-- temp -->
-                  <p class="hourly-data" id="temp1">100 &deg;F</p>
-                  <p class="hourly-data" id="rain1">30% Chance of rain</p>
-                  <p class="hourly-data wind" id="wind1">5.23 mph winds</p>
-               </div>
-               <div class="col-md-2 hourly-content text-center">
-                  <h5 id="time2" class='text-center pt-3'>9:00 AM</h5>
-                  <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" class="hourly-icon" id="icon2">
-                  <!-- precip -->
-                  <!-- temp -->
-                  <p class="hourly-data" id="temp2">100 &deg;F</p>
-                  <p class="hourly-data" id="rain2">30% Chance of rain</p>
-                  <p class="hourly-data wind" id="wind2">5.23 mph winds</p>
-               </div>
-               <div class="col-md-2 hourly-content text-center">
-                  <h5 id="time3" class='text-center pt-3'>9:00 AM</h5>
-                  <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" class="hourly-icon" id="icon3">
-                  <!-- precip -->
-                  <!-- temp -->
-                  <p class="hourly-data" id="temp3">100 &deg;F</p>
-                  <p class="hourly-data" id="rain3">30% Chance of rain</p>
-                  <p class="hourly-data wind" id="wind3">5.23 mph winds</p>
+               <div class="col-md-3 text-center weather-item align-self-center" id="sunset">
+                  <div class="weather-content mx-auto d-flex align-items-center justify-content-center">
+                     <div class="items">
+                        <h4 class="pt-3">Sunset</h4>
+                        <p class="align-self-center"><span class="info time">8:00 PM</span></p>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
+         <div class="row-separator"></div>
+         <h1 id="hourly" class="text-center mb-5 data-header">Hourly Weather Data for [LOCATION]</h1>
+         <div class="container">
+            <div class="swiper-container">
+               <!-- Additional required wrapper -->
+               <div class="swiper-wrapper">
+                  <!-- Slides -->
+               </div>
+               <div class="swiper-button-prev" id="left-button"></div>
+               <div class="swiper-button-next" id="right-button"></div>
+            </div>
+         </div>
+         <div class="row justify-content-center" id="card-section">
+            <!-- <div class="col-md-2 hourly-content text-center">
+               <h5 id="time2" class='text-center pt-3'>9:00 AM</h5>
+               <img src="https://openweathermap.org/img/wn/50d@2x.png" alt="" class="hourly-icon" id="icon2">
+               <p class="hourly-data" id="temp2">100 &deg;F</p>
+               <p class="hourly-data" id="rain2">30% Chance of rain</p>
+               <p class="hourly-data wind" id="wind2">5.23 mph winds</p>
+               </div> -->
+         </div>
+         </div>
+         <footer>
+            <hr class="footer-separator">
+            <div class="row">
+               <div class="col-sm-5 offset-1" id="footer-describe">
+                  <p class="lead">&copy; Created in 2021 by Ganning Xu</p>
+                  <p><a href="https://github.com/ganning127/weathery" target="_blank" class="text-reset">Source Code</a></p>
+               </div>
+               <div class="col-sm-4 text-right img-container">
+                  <img src="./img/logo.png" alt="Weathery Logo" class="img-fluid" id="footer-img">
+               </div>
+            </div>
+         </footer>
       </section>
-
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
       <script src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+      <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
       <script src="./js/search.js"></script>
    </body>
 </html>
