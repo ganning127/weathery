@@ -1,7 +1,7 @@
 # Weathery
 
 ## Overview
-Gets a dad joke from the *icanhazdadjoke* API and posts it on Twitter under [@DadJokesAlways](https://twitter.com/DadJokesAlways) using *Twitter* API
+A simple a easy-to-use website that allows people to quickly see both current and hourly weather conditions.
 
 ## Logic Flow
 1. User enters a city or zip code into Weathery.
